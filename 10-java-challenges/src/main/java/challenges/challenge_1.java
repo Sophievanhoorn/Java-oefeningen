@@ -16,40 +16,37 @@ public class challenge_1 {
 
 	public static void main(String[] args) {
 		String sentence = "Dog bites man";
-//		String reversed = reverse(sentence);
-		String reversed2 = reverse2(sentence);
 
-		System.out.println(reversed2);
-
-		// reverses all the letters
-		StringBuilder stringbuilder = new StringBuilder(sentence).reverse();
-//		System.out.println(stringbuilder);
+		System.out.println(reverse(sentence));
 
 	}
 
-	public static String reverse2(String string) {
+	public static String reverse(String string) {
 		String[] stringWords;
-		String reversedString = null;
 		int i;
-		
-		Scanner scan = new Scanner(string);
-		String input = scan.nextLine();
-		stringWords = input.split(" ");
-	
-		
-		for(i = stringWords.length -1; i >= 0; i--) {
-			StringBuilder sb = new StringBuilder(stringWords[i] + " ");
-			sb = sb.append(sb);
-			
-			System.out.println(sb);
-		}
-		
-		
-		return reversedString;
 
+		// split sentence into words
+		stringWords = string.split(" ");
+		StringBuilder sb = new StringBuilder();
+		boolean firstWord = true;
+
+		/*
+		 * for index = length of String[] - 1 because index starts at 0; continue as
+		 * long as index is >= 0; index decreases by 1 for the order of the reversed
+		 * sentence
+		 */
+		for (i = stringWords.length - 1; i >= 0; i--) {
+			if (firstWord = true) {
+				firstWord = false;
+			}
+			sb.append(" ");
+			sb.append(stringWords[i]);
+
+		}
+		return sb.toString();
 	}
 
-	public static String reverse(String s) {
+	public static String reverse2(String s) {
 
 		// Finding the index of the whitespaces
 		int x = s.indexOf(" ");
@@ -59,7 +56,7 @@ public class challenge_1 {
 			return s;
 
 		// Recursive call
-		String process = reverse(s.substring(x + 1)) + " " + s.substring(0, x);
+		String process = reverse2(s.substring(x + 1)) + " " + s.substring(0, x);
 
 		return process;
 	}
