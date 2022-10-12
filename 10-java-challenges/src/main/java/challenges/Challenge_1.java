@@ -3,7 +3,7 @@ package challenges;
 import java.util.Iterator;
 import java.util.Scanner;
 
-public class challenge_1 {
+public class Challenge_1 {
 
 	/*
 	 * https://www.codecademy.com/resources/blog/java-code-challenges-for-beginners/
