@@ -15,8 +15,11 @@ public class Challenge_2 {
 	public static void main(String[] args) {
 
 		String sentence = "I love Codecademy";
+		String sentence2 = "I can program in Java";
+		int wordAtIndex = 3;
 
 		System.out.println(findWord(sentence));
+		System.out.println(findWordAtIndex(sentence2, wordAtIndex));
 
 	}
 
@@ -28,6 +31,20 @@ public class Challenge_2 {
 		for (int i = -1; i <= words.length; i++) {
 			if (i == 1) {
 				return sb.append(words[i]).toString();
+			}
+		}
+		return string;
+	}
+	
+	////////////////////////////////////////////////// PART 2
+	
+	private static String findWordAtIndex(String string, int wordAtIndex) {
+		String[] words = string.split(" ");
+		StringBuilder sb2 = new StringBuilder();
+		
+		for(int i = -1; i <= words.length; i++) {
+			if(i == wordAtIndex - 1) {
+				return sb2.append(words[i]).toString();
 			}
 		}
 		return string;
