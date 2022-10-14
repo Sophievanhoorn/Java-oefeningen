@@ -1,8 +1,5 @@
 package challenges;
 
-import java.util.Iterator;
-import java.util.Scanner;
-
 public class Challenge_1 {
 
 	/*
@@ -61,9 +58,7 @@ public class Challenge_1 {
 			return s;
 
 		// Recursive call
-		String process = reverse2(s.substring(x + 1)) + " " + s.substring(0, x);
-
-		return process;
+		return reverse2(s.substring(x + 1)) + " " + s.substring(0, x);
 	}
 
 	///////////////////////////////////////////// PART 2

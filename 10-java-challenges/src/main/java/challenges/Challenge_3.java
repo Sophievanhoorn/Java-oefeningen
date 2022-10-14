@@ -3,10 +3,12 @@ package challenges;
 public class Challenge_3 {
 
 	/*
+	 * PART 1
 	 * For a given input string, return a Boolean TRUE if the string starts with a
 	 * given input word. So, for an input string of “hello world” and input word
 	 * “hello,” the program should return TRUE.
 	 * 
+	 * PART 2
 	 * For a more advanced word searcher, create a program that returns the number
 	 * of times a word appears in an input string. For example, given an input word
 	 * “new” and an input string “I'm the new newt,” the program should return a
@@ -26,17 +28,13 @@ public class Challenge_3 {
 
 	}
 
-	private static boolean wordFound(String string, String input) {
-
-		if (string.contains(input)) {
-			return true;
-		}
-		return false;
+	public static boolean wordFound(String string, String input) {
+		return string.contains(input);
 	}
 
 	//////////////////////////////////////// PART 2
 
-	private static int numberOfWordsFound(String string, String input) {
+	public static int numberOfWordsFound(String string, String input) {
 
 		String[] words = string.split(" ");
 		int i = 0;
