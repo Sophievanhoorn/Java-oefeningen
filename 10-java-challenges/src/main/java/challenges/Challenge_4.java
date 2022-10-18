@@ -19,11 +19,11 @@ public class Challenge_4 {
 
 	public static void main(String[] args) {
 
-		String[] inputArray = { "pairs", "Paris", "gagaga" };
+		String[] inputArray = { "pairs", "Paris"};
 		String[] wordArray = { "tar", "rat", "art", "meats", "steam" };
 
 		System.out.println("Words are anograms = " + checkIfAnagrams(inputArray));
-//		System.out.println(sortAnagramArray(wordArray));
+		System.out.println(sortAnagramArray(wordArray));
 	}
 
 	public static boolean checkIfAnagrams(String[] inputArray) {
@@ -65,12 +65,9 @@ public class Challenge_4 {
 	public static String[] sortAnagramArray(String[] inputArray) {
 
 		for (int i = 0; i < inputArray.length; i++) {
-			if()
-			checkIfAnagrams(inputArray);
-			String input = inputArray[i].toLowerCase();
-			String nextInput=
-			if()
 			
+			checkIfAnagrams(inputArray);
+			String input = inputArray[i].toLowerCase();	
 
 		}
 
