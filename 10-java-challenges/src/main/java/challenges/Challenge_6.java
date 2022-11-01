@@ -30,6 +30,8 @@ public class Challenge_6 {
 		}
 		return reverse;
 	}
+	
+	////////////////////////////////////////////////////////// PART 2
 
 	private static double reverseDouble(double inputDouble) {
 
