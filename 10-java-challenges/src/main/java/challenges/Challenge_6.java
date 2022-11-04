@@ -20,7 +20,7 @@ public class Challenge_6 {
 		System.out.println("Input: " + inputDouble + " reversed is: " + reverseDouble(inputDouble));
 	}
 
-	private static int reverseInt(int input) {
+	public static int reverseInt(int input) {
 
 		int reverse = 0;
 		while (input != 0) {
@@ -33,7 +33,7 @@ public class Challenge_6 {
 	
 	////////////////////////////////////////////////////////// PART 2
 
-	private static double reverseDouble(double inputDouble) {
+	public static double reverseDouble(double inputDouble) {
 
 		double reverse = 0;
 		long inputLong = (int) (inputDouble * 100);

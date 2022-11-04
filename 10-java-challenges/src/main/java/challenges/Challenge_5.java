@@ -27,7 +27,7 @@ public class Challenge_5 {
 		System.out.println("Sentence is a perfect pangram: " + checkIfPerfectPangram(sentence2));
 	}
 
-	private static boolean checkIfPangram(String sentence) {
+	public static boolean checkIfPangram(String sentence) {
 		String[] alphabetArray = "abcdefghijklmnopqrstuvwxyz".split("|");
 		sentence = sentence.toLowerCase();
 
@@ -46,7 +46,7 @@ public class Challenge_5 {
 
 	////////////////////////////////////////////////////// PART 2
 
-	private static boolean checkIfPerfectPangram(String sentence) {
+	public static boolean checkIfPerfectPangram(String sentence) {
 		String[] alphabetArray = "abcdefghijklmnopqrstuvwxyz".split("|");
 
 		if (checkIfPangram(sentence)) {

@@ -22,7 +22,7 @@ public class Challenge_2 {
 
 	}
 
-	private static String findWord(String string) {
+	public static String findWord(String string) {
 
 		String[] words = string.split(" ");
 		StringBuilder sb = new StringBuilder();
@@ -37,7 +37,7 @@ public class Challenge_2 {
 
 	////////////////////////////////////////////////// PART 2
 
-	private static String findWordAtIndex(String string, int wordAtIndex) {
+	public static String findWordAtIndex(String string, int wordAtIndex) {
 		String[] words = string.split(" ");
 		StringBuilder sb2 = new StringBuilder();
 
