@@ -26,12 +26,14 @@ public class Challenge_7 {
 		int armstrongNum = 8208;
 		int notArmstrongNum = 154;
 
-		System.out.println(isArmstrongNum(armstrongNum));
-		System.out.println(isArmstrongNum(notArmstrongNum));
+		System.out.println(armstrongNum + " is Armstrong number: " + isArmstrongNum(armstrongNum));
+		System.out.println(notArmstrongNum + " is Armstrong number: " + isArmstrongNum(notArmstrongNum));
+
+		searchForArmstrongNumber(500);
 
 	}
 
-	public static Boolean isArmstrongNum(int number) {
+	public static boolean isArmstrongNum(int number) {
 
 		ArrayList<Integer> intArray = new ArrayList<>();
 		int num = number;
@@ -46,8 +48,6 @@ public class Challenge_7 {
 			num = num / 10;
 
 			intArray.add((int) remainder);
-
-			System.out.println(intArray.toString());
 		}
 
 		int result = 0;
@@ -67,26 +67,15 @@ public class Challenge_7 {
 
 //////////////////////////////////////////////////////////////////PART 2
 
-//	public static Boolean returnArmstrongNumbers(int number) {
-//		int armstrongNumber = 0;
-//
-//		ArrayList<Integer> intArray = new ArrayList<Integer>();
-//
-//		String intToString = Integer.toString(number);
-//		int digits = intToString.length();
-//
-//		for (int i = 0; i < digits; i++) {
-//
-//			long remainder = number % 10;
-//
-//			number = number / 10;
-//
-//			String remainderToString = Long.toString(remainder);
-//
-//			intArray.add(Integer.parseInt(remainderToString.concat(Integer.toString(digits))));
-//
-//			System.out.println(intArray.toString());
-//		}
-//		return null;
-//	}
+	public static void searchForArmstrongNumber(int numMax) {
+
+		StringBuilder sb = new StringBuilder("Armstrong numbers between 0 and " + numMax + ":");
+
+		for (int i = 0; i <= numMax; i++) {
+			if (isArmstrongNum(i)) {
+				sb.append(" " + i + ", ");
+			}
+		}
+		System.out.println(sb.substring(0, sb.length()-2));
+	}
 }
