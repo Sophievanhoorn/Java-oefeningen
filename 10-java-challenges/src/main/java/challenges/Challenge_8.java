@@ -17,32 +17,38 @@ public class Challenge_8 {
 
 	public static void main(String[] args) {
 
-		int[] numberArray = { 1, 14, 7, 5 };
+		int[] numberArray = { 1, 14, 7, 5, 20, 20 };
+		int[] numberArray2 = { 1, 14 };
+		int[] numberArray3 = {};
 
 		System.out.println(getMaxProduct(numberArray));
+		System.out.println(getMaxProduct(numberArray2));
+		System.out.println(getMaxProduct(numberArray3));
 	}
 
 	public static String getMaxProduct(int[] numberArray) {
+		int numMin = 0;
+		int numMax = 0;
+		int arrayLength = numberArray.length;
 
-		int number = 0;
-		int product = 0;
-		int result = 0;
-		int[] resultArray = new int[3];
+		if (arrayLength >= 2) {
+			Arrays.sort(numberArray);
 
-		for (int i = 0; i < numberArray.length; i++) {
-			number = Array.getInt(numberArray, i);
-			for (int num : numberArray) {
-				product = number * num;
-				if (product > result) {
-					result = product;
-					resultArray[0] = number;
-					resultArray[1] = num;
-					resultArray[2] = result;
+			numMin = Array.getInt(numberArray, arrayLength - 2);
+			numMax = Array.getInt(numberArray, arrayLength - 1);
 
-					System.out.println("Largest product : " + result);
-				}
-			}
+			int result = numMin * numMax;
+			int[] resultArray = { numMin, numMax, result };
+
+			return Arrays.toString(resultArray);
+
+		} else {
+			System.out.println("The input array contains " + arrayLength
+					+ " number(s). This method needs at least 2 numbers to work.");
+			return "";
 		}
-		return Arrays.toString(resultArray);
 	}
+
+	//////////////////////////////////////////////////// PART 2
+
 }
