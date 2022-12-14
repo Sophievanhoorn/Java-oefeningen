@@ -18,16 +18,16 @@ public class Challenge_10 {
 		int inputNumber = 100;
 
 		getPrimeFactors(inputNumber);
-
 	}
 
 	private static void getPrimeFactors(int inputNumber) {
 
+		StringBuilder sb = new StringBuilder("the prime factors of " + inputNumber + " are: ");
 		for (int number = 1; number <= inputNumber; number++) {
 			if (inputNumber % number == 0) {
-				System.out.println(number);
+				sb.append(number + ", ");
 			}
 		}
+		System.out.println(sb.toString().substring(0, sb.length() - 2));
 	}
-
 }
