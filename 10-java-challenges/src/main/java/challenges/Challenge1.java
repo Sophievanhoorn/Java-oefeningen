@@ -1,6 +1,6 @@
 package challenges;
 
-public class Challenge_1 {
+public class Challenge1 {
 
 	/*
 	 * https://www.codecademy.com/resources/blog/java-code-challenges-for-beginners/
@@ -66,7 +66,7 @@ public class Challenge_1 {
 		// For now it only works with "!"
 		String[] chars = string.split("|");
 		StringBuilder sb = new StringBuilder();
-		
+
 		sb.append(string.toLowerCase());
 		sb.replace(0, 1, chars[0].toUpperCase());
 
