@@ -18,7 +18,7 @@ public class Palindrome_Challenge {
 		String sentence = "De mooie zeeman nam Anna mee zei oom Eda.";
 		String sentence2 = "Kauwen paarden als kraaien; dat is waar, niet waar yay is dat kraaien als paarden kauwen.";
 
-//		isPalindrome(sentence);
+		isPalindrome(sentence);
 		isPalindromeSentence(sentence2);
 
 	}
@@ -34,7 +34,8 @@ public class Palindrome_Challenge {
 				strippedSentence[i] = Character.toUpperCase(strippedSentence[i]);
 				strippedSentence[j] = Character.toUpperCase(strippedSentence[j]);
 
-				System.out.printf(String.format("The sentence is not a Palindrome sentence : %s", String.copyValueOf(strippedSentence)));
+				System.out.printf(String.format("The sentence is not a Palindrome sentence : %s",
+						String.copyValueOf(strippedSentence)));
 				break;
 			} else {
 				check = true;
