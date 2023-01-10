@@ -1,4 +1,4 @@
-package section1;
+package sections.section1;
 
 public class HelloJava {
 
