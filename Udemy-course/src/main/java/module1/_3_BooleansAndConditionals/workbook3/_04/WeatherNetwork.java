@@ -1,7 +1,5 @@
 package module1._3_BooleansAndConditionals.workbook3._04;
 
-import java.util.Iterator;
-
 public class WeatherNetwork {
 	public static void main(String[] args) {
 
@@ -14,11 +12,11 @@ public class WeatherNetwork {
 
 		String forecast;
 
-		if(temp <= -1) {
+		if (temp <= -1) {
 			forecast = "The forecast is FREEZING! Stay home!";
-		}else if(temp <= 10) {
-			forecast ="The forecast is Chilly. Wear a coat!";
-		}else {
+		} else if (temp <= 10) {
+			forecast = "The forecast is Chilly. Wear a coat!";
+		} else {
 			forecast = "It's warm. Go outside!";
 		}
 

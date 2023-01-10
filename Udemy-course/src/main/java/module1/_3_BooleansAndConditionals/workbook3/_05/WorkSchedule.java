@@ -10,7 +10,7 @@ public class WorkSchedule {
 		boolean holiday = false;
 		String message;
 
-		if (holiday == true) {
+		if (holiday) {
 			message = "Woohoo, no work!";
 		} else if (day > 5) {
 			message = "It's the weekend, no work!";
