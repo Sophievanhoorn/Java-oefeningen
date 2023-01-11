@@ -19,7 +19,7 @@ public class Challenge9 {
 		int number = 5;
 		int inputNumber = 50;
 
-		System.out.println(primeNumberCalculator(number));
+//		System.out.println(primeNumberCalculator(number));
 		primeNumbersBetween(inputNumber);
 	}
 
@@ -27,7 +27,6 @@ public class Challenge9 {
 
 		int count = 0;
 		int x = number / 2;
-		boolean isPrime = false;
 
 		if (number == 0 || number == 1) {
 			return false;
@@ -39,12 +38,7 @@ public class Challenge9 {
 				}
 			}
 		}
-
-		if (count == 0) {
-			isPrime = true;
-			return isPrime;
-		}
-		return isPrime;
+		return count == 0;
 	}
 
 	///////////////////////////////////////////////////////////// PART 2
