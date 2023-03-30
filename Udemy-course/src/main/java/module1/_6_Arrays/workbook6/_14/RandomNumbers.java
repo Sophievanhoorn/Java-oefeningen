@@ -1,7 +1,5 @@
 package module1._6_Arrays.workbook6._14;
 
-import java.util.Arrays;
-
 public class RandomNumbers {
 	public static void main(String[] args) {
 

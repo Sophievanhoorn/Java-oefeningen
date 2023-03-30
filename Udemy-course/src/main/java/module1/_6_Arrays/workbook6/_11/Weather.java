@@ -1,7 +1,5 @@
 package module1._6_Arrays.workbook6._11;
 
-import java.util.Arrays;
-
 public class Weather {
 	public static void main(String[] args) {
 
