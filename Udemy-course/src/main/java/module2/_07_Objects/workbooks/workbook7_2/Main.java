@@ -1,7 +1,5 @@
 package module2._07_Objects.workbooks.workbook7_2;
 
-import java.util.Arrays;
-
 public class Main {
 
 	/*
