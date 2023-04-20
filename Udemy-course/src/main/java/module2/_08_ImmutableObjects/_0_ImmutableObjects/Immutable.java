@@ -1,4 +1,4 @@
-package module2._08_ImmutableObjects._1_Immutable_Objects;
+package module2._08_ImmutableObjects._0_ImmutableObjects;
 
 public class Immutable {
     public static void main(String[] args) {        
