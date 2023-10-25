@@ -1,94 +1,90 @@
 package module2._10_ExceptionHandling.Challenge.Part_2;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class Main {
-    static Store store = new Store();
+	static Store store = new Store();
 
-    public static void main(String[] args) {
+	public static void main(String[] args) {
 
-        try {
-            loadMovies("movies.txt");
-            printStore();
-            userInput();
-        } catch (FileNotFoundException e) {
-            System.out.println(e.getMessage());
-        }
+		loadMovies();
+		printStore();
+		userInput();
 
-    }
+	}
 
-    public static void userInput() {
-        Scanner scanner = new Scanner(System.in);
-        String status = "continue";
-    
-        while (status.equals("continue")) {
-            int choice = (promptForChoice(scanner));
-            Movie movie = store.getMovie(choice);
-            double rating = promptForRating(scanner, movie.getName());
-    
-            movie.setRating(rating);
-            store.setMovie(choice, movie);
-            printStore();
-            System.out.print("To edit another rating, type: 'continue': ");
-            status = scanner.next();
-        }
-        scanner.close();
-    }
+	public static void userInput() {
+		Scanner scanner = new Scanner(System.in);
+		String status = "continue";
 
-    public static int promptForChoice(Scanner scanner) {
-        while (true) {
-            System.out.print("\nPlease choose an integer between 0 - 9: ");
+		while (status.equals("continue")) {
+			int choice = (promptForChoice(scanner));
+			Movie movie = store.getMovie(choice);
+			double rating = promptForRating(scanner, movie.getName());
 
-            // 1. Anticipate the user not entering an integer.
+			movie.setRating(rating);
+			store.setMovie(choice, movie);
+			printStore();
+			System.out.print("To edit another rating, type: 'continue': ");
+			status = scanner.next();
+		}
+		scanner.close();
+	}
 
-            int choice = scanner.nextInt();
+	public static int promptForChoice(Scanner scanner) {
+		while (true) {
+			System.out.print("\nPlease choose an integer between 0 - 9: ");
+			if (!scanner.hasNextInt()) {
+				scanner.next();
+				continue;
+			}
 
-            // 2. Anticipate the choice being incorrect.
-            return choice;
-        }
-    }
+			int choice = scanner.nextInt();
+			if (!incorrectChoice(choice))
+				return choice;
+		}
+	}
 
-    public static boolean incorrectChoice(int choice) {
-        // TODO
-        return false;
-    }
+	public static boolean incorrectChoice(int choice) {
+		return choice < 0 || choice > 9;
+	}
 
-    public static double promptForRating(Scanner scanner, String name) {
-        while (true) {
-            System.out.print("\nSet a new rating for " + name + ": ");
-            
-            // 1. Anticipate the user not entering a double.
+	public static double promptForRating(Scanner scanner, String name) {
 
-            double rating = scanner.nextDouble();
-            
-            // 2. Anticipate the rating being incorrect.
+		while (true) {
+			System.out.print("\nSet a new rating for " + name + ": ");
+			if (!scanner.hasNextDouble()) {
+				scanner.next();
+				continue;
+			}
 
-            return rating;
-         }
-    }
+			double rating = scanner.nextDouble();
+			if (!incorrectRating(rating)) {
+				return rating;
+			}
+		}
+	}
 
-    public static boolean incorrectRating(double rating) {
-        // TODO
-        return false;
-    }
+	public static boolean incorrectRating(double rating) {
+		return rating < 0 || rating > 10;
+	}
 
-    public static void loadMovies(String fileName) throws FileNotFoundException {
-        FileInputStream fis = new FileInputStream(fileName);
-        Scanner scanFile = new Scanner(fis);
+	public static void loadMovies() {
+		String[] movieList = new String[] { "The Shawshank Redemption--BlueRay--9.2", "The Godfather--BlueRay--9.1",
+				"The Godfather: Part II--DVD--9.0", "The Dark Knight--BlueRay--9.0", "Schindler's List--DVD--8.9",
+				"The Lord of the Rings: The Return of the King--BlueRay--8.9", "Pulp Fiction--DVD--8.8",
+				"The Good, the Bad and the Ugly--DVD--8.8",
+				"The Lord of the Rings: The Fellowship of the Ring--DVD--8.8" };
 
-        while (scanFile.hasNextLine()) {
-            String line = scanFile.nextLine();
-            String[] words = line.split("--");
-            store.addMovie(new Movie(words[0], words[1], Double.parseDouble(words[2])));
-        }
-        scanFile.close();
-   }
+		for (String line : movieList) {
+			String[] words = line.split("--");
+			store.addMovie(new Movie(words[0], words[1], Double.parseDouble(words[2])));
+		}
+	}
 
-    public static void printStore() {
-        System.out.println("********************************MOVIE STORE*******************************");
-        System.out.println(store);
-    }
+	public static void printStore() {
+		System.out.println("********************************MOVIE STORE*******************************");
+		System.out.println(store);
+	}
 
 }
