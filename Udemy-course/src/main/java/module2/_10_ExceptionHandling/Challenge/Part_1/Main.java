@@ -1,49 +1,60 @@
 package module2._10_ExceptionHandling.Challenge.Part_1;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
+
+import module2._10_ExceptionHandling.Challenge.Part_2.Movie;
 
 public class Main {
 	static Store store = new Store();
 
 	public static void main(String[] args) {
 
-		loadMovies("movies.txt");
-		printStore();
-		userInput();
-
-	}
-
-	public static void userInput() {
-		Scanner scanner = new Scanner(System.in);
-		String status = "continue";
-
-		while (status.equals("continue")) {
-			int choice = (promptForChoice(scanner));
-			Movie movie = store.getMovie(choice);
-			double rating = promptForRating(scanner, movie.getName());
-
-			movie.setRating(rating);
-			store.setMovie(choice, movie);
+		try {
+			loadMovies("movies.txt");
 			printStore();
-			System.out.print("To edit another rating, type: 'continue': ");
-			status = scanner.next();
+//			userInput();
+		} catch (FileNotFoundException e) {
+			System.out.println(e.getMessage());
 		}
-		scanner.close();
+
 	}
+
+//	public static void userInput() {
+//		Scanner scanner = new Scanner(System.in);
+//		String status = "continue";
+//
+//		while (status.equals("continue")) {
+//			int choice = (promptForChoice(scanner));
+//			Movie movie = store.getMovie(choice);
+//			double rating = promptForRating(scanner, movie.getName());
+//
+//			movie.setRating(rating);
+//			store.setMovie(choice, movie);
+//			printStore();
+//			System.out.print("To edit another rating, type: 'continue': ");
+//			status = scanner.next();
+//		}
+//		scanner.close();
+//	}
 
 	public static int promptForChoice(Scanner scanner) {
 		while (true) {
 			System.out.print("\nPlease choose an integer between 0 - 9: ");
 
-			if (!scanner.hasNextInt()) {
-				scanner.next();
-				continue;
-			}
+			// 1. Anticipate the user not entering an integer.
+			try {
+				int choice = scanner.nextInt();
 
-			int choice = scanner.nextInt();
-
-			if (!incorrectChoice(choice)) {
+				// 2. Anticipate the choice being incorrect.
+				if (incorrectChoice(choice)) {
+					throw new IllegalArgumentException("Choice must be between 0-10");
+				}
 				return choice;
+
+			} catch (IllegalArgumentException e) {
+				System.out.println("Please enter an integer");
 			}
 		}
 	}
@@ -56,14 +67,17 @@ public class Main {
 		while (true) {
 			System.out.print("\nSet a new rating for " + name + ": ");
 
-			if (!scanner.hasNextDouble()) {
-				scanner.next();
-				continue;
-			}
+			// 1. Anticipate the user not entering a double.
+			try {
+				double rating = scanner.nextDouble();
+				if (incorrectRating(rating)) {
+					throw new IllegalArgumentException("Rating must be between 0 - 10");
+				}
+				// 2. Anticipate the rating being incorrect.
 
-			double rating = scanner.nextDouble();
-			if (!incorrectRating(rating)) {
 				return rating;
+			} catch (IllegalArgumentException e) {
+				System.out.println("Rating must be a double");
 			}
 		}
 	}
@@ -72,16 +86,16 @@ public class Main {
 		return rating < 0 || rating > 10;
 	}
 
-	public static void loadMovies(String fileName) {
+	public static void loadMovies(String fileName) throws FileNotFoundException {
+		FileInputStream fis = new FileInputStream(fileName);
+		Scanner scanFile = new Scanner(fis);
 
-		try (Scanner scanFile = new Scanner(Main.class.getResourceAsStream(fileName))) {
-			while (scanFile.hasNextLine()) {
-				String movie = scanFile.nextLine();
-				System.out.println(movie);
-			}
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
+		while (scanFile.hasNextLine()) {
+			String line = scanFile.nextLine();
+			String[] words = line.split("--");
+//			store.addMovie(new Movie(words[0], words[1], Double.parseDouble(words[2])));
 		}
+		scanFile.close();
 	}
 
 	public static void printStore() {
