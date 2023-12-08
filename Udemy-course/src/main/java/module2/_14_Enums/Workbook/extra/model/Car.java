@@ -3,9 +3,9 @@ package module2._14_Enums.Workbook.extra.model;
 import java.time.LocalDate;
 
 public class Car {
-	private static int MIN_YEAR = 1900;
-	private static double MIN_PRICE = 0;
-	private static double MAX_PRICE = 200000;
+	public static int MIN_YEAR = 1900;
+	public static double MIN_PRICE = 0;
+	public static double MAX_PRICE = 200000;
 
 	private String make;
 	private String model;
@@ -17,7 +17,7 @@ public class Car {
 		SEDAN, COUPE, HATCHBACK, SUV, TRUCK, VAN
 	}
 
-	private enum TrafficLight {
+	public enum TrafficLight {
 		RED, GREEN, YELLOW
 	}
 
@@ -30,14 +30,13 @@ public class Car {
 
 	}
 
-//	public Car(String make, String model, int year, double price, BodyType bodyType) {
-//		this.make = make;
-//		this.model = model;
-//		this.bodyType = bodyType;
-//		this.year = year;
-//		this.price = price;
-//
-//	}
+	public Car(Car car) {
+		this.make = car.getMake();
+		this.model = car.getModel();
+		this.bodyType = car.getBodyType();
+		this.year = car.getYear();
+		this.price = car.getPrice();
+	}
 
 	public String getMake() {
 		return this.make;
@@ -94,7 +93,8 @@ public class Car {
 
 	public void setPrice(double price) {
 		if (price < MIN_PRICE || price > MAX_PRICE) {
-			throw new IllegalArgumentException("Price can't be lower than 0 or higher than 200.000");
+			throw new IllegalArgumentException(
+					"Price can't be lower than " + MIN_PRICE + " or higher than " + MAX_PRICE);
 		} else {
 			this.price = price;
 		}

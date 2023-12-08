@@ -11,7 +11,7 @@ public class Car {
 		SEDAN, COUPE, HATCHBACK, SUV, TRUCK, VAN
 	}
 
-	public enum TrafficLight {
+	public enum TrafficLight1 {
 		RED, GREEN, YELLOW
 	}
 
@@ -40,7 +40,7 @@ public class Car {
 		this.productionYear = year;
 	}
 
-	public void drive(TrafficLight trafficLight) {
+	public void drive(TrafficLight1 trafficLight) {
 		if (trafficLight == null)
 			throw new IllegalArgumentException("Traffic Light cannot be null");
 
